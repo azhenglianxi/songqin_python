@@ -9,7 +9,7 @@ with open(file_log_path, 'r') as file_log:
     filebuffer = contents.split('\n')
     del filebuffer[0], filebuffer[-1]
     # 遍历文件，
-
+    resdict = {}
     for i in filebuffer:
         temp = i.split('\t')
         # print(temp)
@@ -17,7 +17,6 @@ with open(file_log_path, 'r') as file_log:
         file_type = temp[0].split('.')[-1].strip()
         # 获取文件大小的集合
         file_size = int(temp[1])
-        resdict = {}
         # 归类统
         #         inFlag  =False
         #         # 5- 统计----同类型----最好--最快方法--用字典(键值)统计  {'类型1'：大小}---预习作业--4行代码
