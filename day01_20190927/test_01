@@ -1,0 +1,20 @@
+print(type(-100)) #type()----查看对象类型
+print(type(3.1415926))#<class 'float'>
+weclome ="你好，欢迎来到松勤自动化学习。"
+print('小李'+weclome)
+print('小张'+weclome)
+#定义一个变量：直接赋值，这个变量什么类型，由你赋值的对象类型决定
+var = 100
+"""定义变量 不能用a1 a2 a3定义
+   数字不能开头 通常字母开头
+
+"""
+import keyword
+print(keyword.kwlist)#系统内部调用的单词
+
+a=3
+b=a
+a=4
+b=a
+print(id(a),id(b))
+#一个变量不能指向多个对象，多个变量可以指向一个对象
