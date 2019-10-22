@@ -1,0 +1,230 @@
+print('-----lesson-21+22-面向对象-----')
+'''
+知识点汇总
+1-面向对象的引入：
+    1-先找出相应的对象
+    2-把这些涉及的对象的关系进行组网
+2-类/实例
+    1-类：
+        1-现实不存在--抽象的概念--人类--鸟类
+        2-一类具有相同特征的事物的统称！
+    2-类里面有
+        1-静态---属性（特征）---变量
+        2-动态---方法（行为）---函数
+3-实例---也叫 对象
+    1-在这个类里面实际存在的个体
+    2-类是实例的抽象化概念
+    3-实例是类的具体实例化体现
+4-实例化操作：
+    1-类里面的变量--属性
+    2-类里面的函数--方法
+    3-创建实例 t1 = Tiger()
+5-静态属性和实例属性
+    1-静态属性：
+        1-也叫类属性
+        2-它属于整个类的
+        3-用法：1-类.属性    2-实例.属性
+    2-实例属性：
+        1-这个属性是  那个实例的，不属于整个类---其他实例不能共享
+        2-定义在 初始化方法 __init__ 里
+        3-一般在创建实例的时候就给定
+        4-只要创建实例--def __init__(self):初始化方法肯定会调用
+        5-self 只是代表词，并不是关键字--可以替换，但不建议替换！不能缺省
+        6-id(self)
+        7-实例化属性---只能    实例.属性
+        8- self 这个实例的本身
+6-方法：
+    1-静态方法
+        1-属于整个类
+        2-类可以直接调用，不需要实例化 ----类.方法 / 实例.方法
+        3-用 @staticmethod 修饰 只能修饰紧跟的那一个
+    2-实例方法：
+        1-有self
+        2- 实例.方法
+7-取随机数
+    from random  import randint
+    randint(0,2)--取 0 1 2 闭区间
+8-时间处理：
+    1- import time
+       time.time()---单位是s 秒   从1970算起
+9-继承
+    1-继承关系可以是多个父类
+    2-重写--在父类跟子类之间的一个多态的体现！
+    3-在重写情况下，调用父类的方法
+        super(SouTiger,s1).roar()
+        super(子类类名,子类的实例名).roar()
+    4- __name    私有属性
+'''
+'''
+1- 找出功能需求里面的角色---类
+    1- 老虎
+        1- 属性
+            1- 静态属性：属于整个类--大家都一样的特征:1
+                1- 腿
+                2- 叫声
+            2- 实例属性：每一个个体这个属性可以不一样
+                1- 体重****
+                2- 高度
+        2- 行为:
+            1- 吃---*
+            2- 跑
+            3- 睡
+            4- 叫---*
+    2- 羊
+    3- 房间
+2- 这些角色串剧情：描述
+
+
+'''
+class Tiger:#定义类--老虎类
+    nickName = '老虎'#静态属性----统称---术语：属性  俗称：特征  本质是：变量
+    #创建实例属性---def __init__()  一开创建实例的时候就给予它这个属性值
+    def __init__(self,inWeight=200):#初始化(构造)方法--当创建实例的时候，这个方法一定会被调用!  本质：函数
+        #self 参数，不需要程序员自己填，解释器会自动传入
+        self.weight = inWeight#创建实例属性  self-就是-实例(t1,t2)
+        print('老虎父类的初始化方法')
+
+    #实例方法
+    def roar(self):#叫的方法
+        print('wow!!!')
+        self.weight -= 5#
+
+    def feed(self,food):#喂食
+        if food == '肉':
+            print('恭喜，喂食正确！')
+            self.weight += 10
+        else:
+            print('抱歉，喂食错误！')
+            self.weight -= 10
+
+    #静态方法
+    @staticmethod#只能修饰紧跟的一个方法
+    def static_roar():
+        print('静态方法---wow！！！')
+
+class Room:
+    def __init__(self,inNum,inAnimal):
+        self.num = inNum
+        self.animal = inAnimal
+
+
+# t1 = Tiger(100)#创建实例--t1
+#
+# r1 = Room(2,t1)#对象的组合
+
+
+#1- 随机数
+from random import randint
+print(randint(0,2))#0 1 2  双闭区间
+
+
+#----游戏初始化-10个房间实例---
+
+'''
+1- for 循环10次
+2- 每一次循环创建一个房间实例
+3- 定义一个list   --存储10个房间实例  alist.append(房间的实例)
+4- 怎么随机动物:
+   #----------游戏初始化----创建10个房间的实例---------
+from random import randint
+roomList = []#10房间的实例
+for cnt in range(1,11):#1---10
+    if randint(0,1) == 1:
+        ani = Tiger()
+    else:
+        ani = Sheep()
+    room = Room(cnt,ani)
+    roomList.append(room)
+
+# print(randint(0,2))#双闭 0 1 2
+
+#--------限时操作-------------------------
+# import time
+# # print(time.time())#从1970----至今
+# startTime = time.time()
+# while True:
+#     curTime = time.time()
+#     if 时间差 > 120s:
+#         break
+#
+
+
+#--------限时操作---over-------------------------
+
+#缺失----游戏主逻辑------------自己完成-----
+
+'''
+#----------------------------
+
+# import time
+# print(time.time())#返回的是时间 单位是 s  从1970到现在的时间
+
+#继承:优点：1、减少代码量  2、易于扩展
+#1- 如果子类里面没有def __init()__,会自动调用父类的
+#2- 如果子类里面有def __init()__,一定要人为去调用
+class SouTiger(Tiger):
+    pass
+
+s1 = SouTiger()
+print(s1.nickName)
+
+# t1.roar()
+# t1.feed('草')
+# print(t1.weight)
+# #
+# t2 = Tiger(200)#创建实例--t2
+# print(t2.weight)
+
+# print(t1.nickName)
+# print(t2.nickName)#实例.属性
+# print(Tiger.nickName)#类.属性
+
+
+
+# class User:#urL   账号  密码
+#     url = ''
+#     def __init__(self,name,password):
+#         print()
+
+
+
+
+方法的重写
+class Tiger:
+    def roar(self):
+        print('父类-Tiger-的实例方法')
+
+    @staticmethod
+    def tell():
+        print('父类Tiger-的静态方法')
+
+class Sheep:
+    def roar(self):
+        print('父类-Sheep-的实例方法')
+
+    @staticmethod
+    def tell():
+        print('父类-Sheep-的静态方法')
+
+class SouTiger(Tiger,Sheep):
+    def roar(self):
+        print('子类的实例方法')
+
+    @staticmethod
+    def tell():
+        print('子类的静态方法')
+
+s1 = SouTiger()#创建子类、
+#1- 直接使用，就直接调用子类自己的方法
+s1.roar()
+#调用父类的实例方法---第一个父类优先
+super(SouTiger,s1).roar()
+#调用父类的静态方法---第一个父类优先
+super(SouTiger,s1).tell()
+
+#那么我们要调用第2个父类的方法---super(你要调用的那个父类的前一个父类-类名,s1).roar()
+#1- 调用第2个父类的实例方法
+super(Tiger,s1).roar()
+#2-调用第2个父类的静态方法
+super(Tiger,s1).tell()
+
