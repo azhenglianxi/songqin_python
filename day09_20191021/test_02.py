@@ -71,9 +71,10 @@ def count_thread():
 
     print(u'游戏结束')
     for room in rooms:
-        print(u'房间%s, 里面是%s,体重%s' % (room.num,
-                                     room.animal.classname,
-                                     room.animal.weight))
+        # print(u'房间%s, 里面是%s,体重%s' % (room.num,
+        #                              room.animal.classname,
+        #                              room.animal.weight))
+          print(f"房间{room.num},里面是{ room.animal.classname},体重{room.animal.weight}")
     os._exit(0)
 
 

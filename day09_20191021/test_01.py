@@ -4,7 +4,7 @@ class Tiger():
 
     def __init__(self,inweight=200): #初始化构造函数 当创建实例的时候 他一定会被调用 本质：函数
         self.weight =inweight    # self 是参数 不需要程序员自己填，解释器会自动传入
-        print('老虎父类初始化方法')
+       # print('老虎父类初始化方法')
     # 实例方法 ********** 老虎的实例方法***********
     #
     def roar(self):  #叫声方法
@@ -75,17 +75,20 @@ while True:
     atime =curTime-startTime
     if atime > 120:
         print('\n\n ***********游戏结束*******\n\n')
-
         for idx,room in enumerate(roomList):
-            print('房间：%s' %(idx+1),room.Num.nickName,room.Animal.inweight)
+           # print('房间：%s' %(idx+1),room.Num.nickName,room.Animal.inweight)
+            print(f"第{idx.Num}号房间，动物是：{room.Num.nickName},动物的体重是{room.Animal.inweight}")
             break
+        #游戏逻辑
     roomno = randint(1, 10)
-    room = roomList[roomno - 1]  # why -1 ?
+    room = roomList[roomno - 1]  # why -1 ? #列表有10个下标是0，9房间实例
+    #2 提示& 接受 用户是否敲门操作
     ch = input('我们来到了房间# %s, 要敲门吗?[y/n]' % roomno)
+    #3
     if ch == 'y':
         room.Animal.roar()
 
-    food = input('请给房间里面的动物喂食:')
+    food = input('请给房间里面的动物喂食 :[meat,grass]')
     room.Animal.feed(food.strip())
 
 
