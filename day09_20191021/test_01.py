@@ -20,9 +20,9 @@ class Tiger():
             self.weight-=10
 
     #静态方法  (如果代码中的实例方法不访问任何实例属性，一般建议实现为静态方法)
-    @staticmethod  #静态装饰器
-    def static_roar():
-        print('只是简单的叫一声')
+ #   @staticmethod  #静态装饰器
+ #   def static_roar():
+ #       print('只是简单的叫一声')
 
 
 class Sheep():
@@ -56,7 +56,7 @@ class Room:
 from random import randint
 
 roomList =[]
-for i in range(1,10): #通过偏离1-10 来确定是个放假
+for i in range(1,11): #通过偏离1-10 来确定是个放假
     if randint(0,1)==1:  #通过随机数来指定 0：老虎 1：羊
         ani=Tiger(200)
     else:
@@ -73,28 +73,21 @@ startTime =time.time()
 while True:
     curTime =time.time()
     atime =curTime-startTime
-    if atime > 120:
+    if atime > 20:
         print('\n\n ***********游戏结束*******\n\n')
-        for idx,room in enumerate(roomList):
-           # print('房间：%s' %(idx+1),room.Num.nickName,room.Animal.inweight)
-            print(f"第{idx.Num}号房间，动物是：{room.Num.nickName},动物的体重是{room.Animal.inweight}")
-            break
+        #重构for 循环下面的数据
+        for one in roomList:
+            print(f"第{one.Num}号房间，动物是{one.Animal.nickName},体重是:{one.Animal.weight}")
+        break
         #游戏逻辑
-    roomno = randint(1, 10)
-    room = roomList[roomno - 1]  # why -1 ? #列表有10个下标是0，9房间实例
-    #2 提示& 接受 用户是否敲门操作
-    ch = input('我们来到了房间# %s, 要敲门吗?[y/n]' % roomno)
-    #3
-    if ch == 'y':
-        room.Animal.roar()
-
-    food = input('请给房间里面的动物喂食 :[meat,grass]')
-    room.Animal.feed(food.strip())
-
-
-
-
-
-
-
-
+    roomNum = randint(1,10)
+    roomObject = roomList[roomNum-1] #列表有10个下标 0,9房间实例
+    print('当前房间的编号是：{}'.format(roomNum))
+    #2.--提示 & 接受 用户是否敲门操作21:10
+    answer = input('是否选择敲门(y/n)?').strip()
+    # 3--判断是否要敲门操作
+    if answer =='y':
+        roomObject.Animal.roar()#房间里的.动物.叫操作
+    # 4--喂食
+    food =input('请输入投喂的食物：（meat/grass）?').strip()
+    roomObject.Animal.feed(food)

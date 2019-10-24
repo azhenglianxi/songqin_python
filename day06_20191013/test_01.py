@@ -7,7 +7,7 @@ fileDir3 = r'g:\n 1.txt'  # r---取消转义
 # 从别的地方获取文件
 fileDir4 = repr(fileDir3)  # repr
 file_object = open()  # 默认模式是R
-fileDir = r'g:\1.txt'
+fileDir = 'g:\1.txt'
 fo = open(fileDir)  # 读文件操作
 print(fo.tell())  # 文件最开始的指针---0
 print(fo.read(2))  # 读取具体的个数
