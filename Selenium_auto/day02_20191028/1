@@ -1,0 +1,351 @@
+选择web元素的方法
+通过id选择元素
+写法1：
+element = driver.find_element_by_id("kw")
+
+
+写法2：
+from selenium.webdriver.common.by import By
+element = driver.find_element(by=By.ID, value="kw")
+Tips: by=By.ID表示以id的方式定位web元素，下面的例子有类似的写法以此类推
+
+通过name选择元素
+写法1：
+cheese = driver.find_element_by_name("cheese")
+
+
+写法2：
+from selenium.webdriver.common.by import By
+cheese = driver.find_element(By.NAME, "cheese")
+
+
+通过class选择元素
+写法1：
+cheeses = driver.find_elements_by_class_name("cheese")
+Tips:注意，这里返回的是一个包含web元素的列表，下同
+写法2：
+from selenium.webdriver.common.by import By
+cheeses = driver.find_elements(By.CLASS_NAME, "cheese")
+
+通过tag选择元素
+写法1：
+如果iframe这个tag在本html中是唯一的，可以根据iframe这个tag名来找到该元素
+frame = driver.find_element_by_tag_name("iframe")
+
+写法2：
+from selenium.webdriver.common.by import By
+frame = driver.find_element(By.TAG_NAME, "iframe")
+
+注意，通过title标签名获取title元素，打印的文本值为空：
+ele2=driver.find_element_by_tag_name('title')
+print(ele2.text)
+
+我们先debug看获取到的元素属性
+
+为什么会造成这种结果？
+首先和我们获取元素的方式没有任何关系
+text显示的应该是网页中可见的内容。
+title不在网页中，所以显示不出来。
+
+Title是一个特殊的元素，标签内的文本表示页面的标题，
+可以通过driver.title属性获取页面标题
+
+
+通过超链接文本选择元素
+写法1：
+ele = driver.find_element_by_link_text("转到百度")
+
+写法2：
+from selenium.webdriver.common.by import By
+ele = driver.find_element(By.LINK_TEXT, "转到百度")
+
+
+
+
+
+获取元素信息
+拿到webelement对象，我们可以对它做一些操作，比如获取元素内部信息
+这个时候操作主体由webdriver变成了webelement，调用的是webelement对象的方法
+获取元素文本
+使用WebElement的 text属性
+
+ele = driver.find_element_by_id("food")
+print ele.text
+
+
+获取元素属性值
+get_attribute方法
+
+
+下面的代码就是获取。。。。。href属性的值
+ele = driver.find_element_by_id("baidulink")
+print ele.get_attribute('href')
+获取到以后，就可以判断链接是否与预期相同
+
+
+
+或者 一个元素的 style属性，比如需要判断颜色是否是红色。
+ele = driver.find_element_by_id("food")
+print ele.get_attribute('style')
+
+
+
+获取元素对应的HTML片段
+那么怎么获取整个HTML呢？还是通过get_attribute方法，
+
+第一种：整个web元素的HTML片段
+只需要参数指定为outerHTML 就可以了
+ele.get_attribute('outerHTML')
+
+第二种：web元素内部子元素HTML片段
+只需要参数指定为'innerHTML'就可以了
+ele.get_attribute('innerHTML')
+
+
+获取的HTML片段可以用来做什么？
+
+
+Beautifulsoup用法
+Beautifulsoup简称BS 是可以从HTML或XML 中提取数据的 第三方库
+有的时候，感觉用Selenium获取某些元素数据不太方便，
+可以将其父节点的html 获取回来，
+得到一个hmtl片段，然后利用BS在本地做分析
+
+BS用途：解析HTML文本，操作对象是字符串，与浏览器无关
+beatufulsoup 不能驱动网页，只能获取信息
+
+
+使用Beautifulsoup分析HTML文本
+安装
+pip install beautifulsoup4 -i https://pypi.douban.com/simple/
+
+还要安装一个库， 因为bs里面缺省的库 对html的兼容性不够
+pip install html5lib
+这个库对html的兼容性基本和浏览器差不多。
+
+
+首先BS操作对象是字符串，假设我要对某个HTML文本做分析，那么就要将文本的字符串读取出来
+# 获取html内容字符串，进行分析
+with open('bs1.html',encoding='utf8') as f:
+    html_doc = f.read()
+
+导入相关库，html5lib不用导入，BS会自动引用
+
+# 导入 BeautifulSoup
+from bs4 import BeautifulSoup
+
+获取一个bs对象，接下来的操作都通过这个bs对象来实现
+# 指定用html5lib来解析html文档
+soup = BeautifulSoup(html_doc, "html5lib")
+
+根据签名称获取元素信息
+soup.p
+soup.title
+soup.div
+
+获取标签文本内容
+soup.title.string   获取该元素本身包含的文本内容
+或
+soup.p.get_text()   获取该元素下所有子元素（如果有）的文本内容，包含自身的文本内容
+
+# 两者的区别是？？？
+参考https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/#string
+https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/#get-text
+
+# string 获取的是  该元素本身直接包含的文字内容
+
+如果一个元素有几个子节点，
+如果我们想获取包含在子节点里面的内容通常就会有问题
+比如第一个div元素
+
+print(soup.div.string)
+
+
+# 但是get_text()却可以
+print(soup.div.get_text())
+空白行也被认为是一个节点， 返回结果连空白行也包含在内了
+
+获取元素父节点
+soup.title.parent  获取父节点
+soup.p.parent.name  获取父节点标签名
+
+
+获取元素属性值
+# 中括号内的是元素的属性
+print(soup.div['id'])
+print(soup.p['style'])
+也可以
+print(soup.p.get('style'))
+
+
+多元查找法
+结合元素属性来查找元素
+# selenium 里面可以根据id属性查找a元素, bs 也可以，比如根据id
+print(soup.find('a', id="link3"))
+
+# 根据其他html属性，比如 href查找 a元素
+print(soup.find('a', href="http://example.com/lacie"))
+
+若存在元素属性与python关键字一样的情况，如class属性
+则表示方法需要修改一下
+print(soup.find('a', class_="urllinks"))
+官方文档：
+https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/
+作业
+https://github.com/jcyrss/songqin-testdev/blob/master/selenium/task/02.md
+
+打开百度新歌榜， http://music.baidu.com/top/new
+
+在排名前50的歌曲中，找出其中排名上升的歌曲和演唱者
+
+注意： 有的歌曲名里面有 "影视原声" 这样的标签， 要去掉
+
+
+最终结果显示的结果如下：
+我喜欢上你时的内心活动:陈绮贞
+我不能忘记你    :林忆莲
+等         :严艺丹
+飞天        :云朵
+粉墨        :霍尊
+春风十里不如你   :李健
+
+
+附录：演示代码
+byid.py:
+# coding=utf8
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome(r"d:\tools\webdrivers\chromedriver.exe")
+
+driver.get('file:///C:/Users/Administrator/Dropbox/python_autotest/autoUI_selenium/lesson02/s1.html') # 打开网址
+
+
+# ele=driver.find_element_by_id('food')#单数形式
+# eles=driver.find_elements_by_id('foood')#负数形式
+#
+# print(ele)
+# print(eles)
+
+# ele=driver.find_element_by_class_name('cheese')
+# print(ele.text)
+# eles=driver.find_elements_by_class_name('cheese')
+# print([ele.text for ele in eles])
+
+
+ele=driver.find_element_by_partial_link_text('转到百度')
+print(ele.text)
+eles=driver.find_elements_by_partial_link_text('转到百度')
+print([ele.text for ele in eles])
+
+# res=ele.get_attribute('outerHTML')#获取整个元素HTML文本
+# res=ele.get_attribute('innerHTML')#获取内部元素HTML文本
+
+# res=ele.get_attribute('innerText')
+
+# print(res)
+# print(ele.text)
+
+
+
+# input('...')
+driver.quit()
+test0904.py:
+from selenium import webdriver
+
+#先获取数据
+from selenium.webdriver.common.by import By
+
+driver=webdriver.Chrome()
+
+driver.get('http://www.weather.com.cn/html/province/jiangsu.shtml')
+
+#ele=driver.find_element_by_id('forecastID')
+ele=driver.find_element('id','forecastID')
+#print(ele.text)
+tmp_msg=ele.text
+
+driver.quit()
+
+cityWeather=tmp_msg.split('℃\n')
+#根据获取数据做进一步分析
+
+#南京
+#22℃/27
+
+#循环遍历城市温度，把城市和最低温度取出来
+#依次比较当前的最低温度，如果发现更低的温度，就进行替换，并且替换城市名称
+lowest=''
+lowestcity=[]
+
+for one in cityWeather:
+    one=one.replace('℃','')
+    tmp=one.split('\n')
+    cityname=tmp[0]
+    print(tmp[1].split('/'))
+    lowweather=min(tmp[1].split('/'))
+
+    #当前温度小于最低温度
+    if lowest=='' or lowest>lowweather:
+        lowest=lowweather
+        lowestcity=[cityname]
+    #最低温度相等
+    elif lowest==lowweather:
+        lowestcity.append(cityname)
+
+print(f'最低温度的城市有：{lowestcity}温度为：{lowest} °C')
+
+test0904_1.py
+from selenium import webdriver
+
+#先获取数据
+from selenium.webdriver.common.by import By
+
+driver=webdriver.Chrome()
+
+driver.get('http://www.weather.com.cn/html/province/jiangsu.shtml')
+
+#ele=driver.find_element_by_id('forecastID')
+ele=driver.find_element('id','forecastID')
+#print(ele.text)
+from bs4 import BeautifulSoup
+
+tmp_msg=ele.get_attribute('outerHTML')
+driver.quit()
+
+# print(tmp_msg)
+soup=BeautifulSoup(tmp_msg,'html5lib')
+
+
+
+cityWeather=soup.find_all('dl')
+#根据获取数据做进一步分析
+
+#南京
+#22℃/27
+
+#循环遍历城市温度，把城市和最低温度取出来
+#依次比较当前的最低温度，如果发现更低的温度，就进行替换，并且替换城市名称
+lowest=''
+lowestcity=[]
+
+for dl in cityWeather:
+
+    # one=one.replace('℃','')
+    # tmp=one.split('\n')
+    cityname=dl.dt.a.string
+    tmp1=dl.dd.a.span.string
+    tmp2=dl.dd.find_all('a')[2].b.string
+    lowweather=min(tmp1,tmp2)
+
+    #当前温度小于最低温度
+    if lowest=='' or lowest>lowweather:
+        lowest=lowweather
+        lowestcity=[cityname]
+    #最低温度相等
+    elif lowest==lowweather:
+        lowestcity.append(cityname)
+
+print(f'最低温度的城市有：{lowestcity}温度为：{lowest} ')
+

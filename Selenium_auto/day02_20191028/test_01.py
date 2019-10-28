@@ -13,3 +13,10 @@
 
 
 #.get_attribute('innerText')
+
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get('file:///D:/Users/azhenglianxi/songqin_python/Selenium_auto/day02_20191028/s1.html')
+print(driver.title)
+
+
