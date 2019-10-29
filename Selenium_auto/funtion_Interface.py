@@ -4,10 +4,9 @@
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
 chrome_weBdriver='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\chromedriver.exe'
-
-#无界面
+firox_webDriver ='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\geckodriver.exe'
+#谷歌——无界面
 
 def ChromeDrverNObroews():
     chrome_options =Options()
@@ -16,9 +15,23 @@ def ChromeDrverNObroews():
     driverChrome =webdriver.Chrome(chrome_weBdriver,chrome_options=chrome_options)
     return driverChrome
 
-#有界面
+#谷歌 ——有界面
 def ChromeDriverBrowser():
     driverChrome = webdriver.Chrome(chrome_weBdriver)
     return driverChrome
 
+
+
+#------------------ 未尝试--------
+#火狐———有界面
+def FiroxDriverBrowser():
+    driverFirox =webdriver.Firefox(firox_webDriver)
+    return  driverFirox
+#火狐———无界面
+def FiroxDrverNObroews():
+    firox_options = Options()
+    firox_options.add_argument('--headless')
+    firox_options.add_argument('disable-gpu')
+    driverChrome = webdriver.Chrome(chrome_weBdriver, chrome_options=firox_options)
+    return firox_options
 

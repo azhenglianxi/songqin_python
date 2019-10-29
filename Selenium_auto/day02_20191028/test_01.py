@@ -16,7 +16,8 @@
 
 from selenium import webdriver
 driver=webdriver.Chrome()
-driver.get('file:///D:/Users/azhenglianxi/songqin_python/Selenium_auto/day02_20191028/s1.html')
-print(driver.title)
+driver.get('file:///D:/Users/azhenglianxi/songqin_python/Selenium_auto/s1.html')
+lix= driver.find_element_by_link_text('新闻')
+print(lix)
 
 

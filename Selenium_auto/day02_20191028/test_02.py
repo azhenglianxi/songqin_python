@@ -39,7 +39,7 @@ print(f'高度是{size["width"]}')
 
 #
 btn = driver.find_element_by_id('su')
-btn.location   #元素的坐标
+#btn.location   #元素的坐标
 e_size =btn.size
 print(f'高度是{e_size["height"]}')
 print(f'高度是{e_size["width"]}')
@@ -48,7 +48,7 @@ print(f'高度是{e_size["width"]}')
 loc =driver.get_window_position()
 print(f"x:{loc['x']}y:{loc['y']}")
 
-driver.x
+
 
 
 
@@ -56,5 +56,3 @@ driver.x
 
 #-------------webelement -------
 
-
-获取
