@@ -13,6 +13,15 @@ for one in li:
         music_titiel =one.find_element_by_class_name('song-title ').text
         author_list =one.find_element_by_class_name('author_list').text
         print(f'排名上升的歌曲有<<{music_titiel}>>,作者是 * {author_list}* ')
+    elif one.find_elements_by_class_name('dowm'):
+        music_titiel = one.find_element_by_class_name('song-title ').text
+        author_list = one.find_element_by_class_name('author_list').text
+        print(f'排名下升的歌曲有<<{music_titiel}>>,作者是 * {author_list}* ')
+    else:
+        music_titiel = one.find_element_by_class_name('song-title ').text
+        author_list = one.find_element_by_class_name('author_list').text
+        print(f'排名未变动的歌曲有<<{music_titiel}>>,作者是 * {author_list}* ')
+
 input('.....')
 driver.close()
 driver.quit()
