@@ -22,7 +22,7 @@ select.deselect_by_index(0) #通过下标选择 从0开始
 
 #全选操作
 select.deselect_all()   #全部取消选择
-select.is_multiple
+select.is_multiple.bit_length()
 
 
 #单选下拉框

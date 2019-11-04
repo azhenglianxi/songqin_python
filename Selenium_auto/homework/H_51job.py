@@ -8,18 +8,18 @@ import  time
 driver =ChromeDriverBrowser()
 driver.get('http://www.51job.com')
 driver.implicitly_wait(3)
-driver.find_element_by_id('kwdselectid').send_keys('python')
+driver.find_element_by_id('kwdselectid').send_keys('php')
 
 #打开城市定位搜索
 driver.find_element_by_id('work_position_click').click()
 
 
 district =driver.find_elements_by_css_selector('work_position_click_multiple_selected span.ttag')
-for one in district:
-    one.click()
+#for one in district:
+#    one.click()
 #杭州这个城市的标签
 time.sleep(3)
-driver.find_element_by_id('work_position_click_center_right_list_category_000000_080200').click()
+#driver.find_element_by_id('work_position_click_center_right_list_category_000000_080200').click()
 #城市  保存
 driver.find_element_by_id('work_position_click_bottom_save').click()
 #搜索
