@@ -6,7 +6,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 chrome_weBdriver='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\chromedriver.exe'
 firox_webDriver ='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\geckodriver.exe'
+Ie_weBdriver='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\IEDriverServer.exe'
 #谷歌——无界面
+
 
 def ChromeDrverNObroews():
     chrome_options =Options()
@@ -27,11 +29,29 @@ def ChromeDriverBrowser():
 def FiroxDriverBrowser():
     driverFirox =webdriver.Firefox(firox_webDriver)
     return  driverFirox
-#火狐———无界面
+
+#火狐—无界面
 def FiroxDrverNObroews():
     firox_options = Options()
     firox_options.add_argument('--headless')
     firox_options.add_argument('disable-gpu')
-    driverChrome = webdriver.Chrome(chrome_weBdriver, chrome_options=firox_options)
+    driverfirox = webdriver.Firefox(firox_webDriver,firefox_options=firox_options )
     return firox_options
+
+
+
+#IE --无界面
+# def IeDriverNObroews():
+#     IE_options = Options()
+#     IE_options.add_argument('--headless')
+#     IE_options.add_argument('disable-gpu')
+#     driverIe = webdriver.Ie(Ie_weBdriver, ie_options=IE_options)
+#     return IE_options
+
+#IE --有界面
+
+def IeDriverBrowser():
+    driverIe =webdriver.Ie()
+    return  driverIe
+
 

@@ -5,4 +5,4 @@
 #setTimeout(function(){debugger},5000)  页面js
 
 import winsound
-winsound.Beep(1500,3000) # 声音
+winsound.Beep(1500,3000) # 电脑发声音
