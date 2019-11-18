@@ -3,7 +3,7 @@ import  time
  
 desired_caps = {}
 desired_caps['platformName'] = 'Android'  #测试平台
-desired_caps['platformVersion'] = '6'   #平台版本,不能写错
+desired_caps['platformVersion'] = '6.5'   #平台版本,不能写错
 desired_caps['deviceName'] = 'test'    #设备名称，多设备时需区分
 
 # 怎么打开桌面？
