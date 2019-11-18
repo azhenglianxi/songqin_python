@@ -6,11 +6,11 @@ from appium import webdriver
 
 desired_caps ={
     "platformName": "Android",
-    "platformVersion": "8.0",
+    "platformVersion": "9.0",
     "deviceName": "test",
     "appActivity":"io.toutiao.android.ui.activity.LaunchActivity",
     "appPackage":"io.manong.developerdaily",
-   # 'app': r'D:\Users\下载\toutiao.apk',
+    'app': r'D:\Users\下载\toutiao.apk',
     "noRest":True,
     "newcommandTimeout":6000,
     "automationName":"UiAutomator2"

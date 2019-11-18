@@ -9,14 +9,14 @@ import  time
 
 desired_caps ={
   "platformName": "Android",
-  "platformVersion": "8",
+  "platformVersion": "9",
   "deviceName": "test",
    "app": "D:\\Users\\下载\\com.ibox.calculators_3.1.0_1310.apk",
   "appActivity": "com.ibox.calculators.SplashActivity",
   "appPackage": "com.ibox.calculators",
   "noRest": True,
-  "newcommandTimeout": 6000
-   # "automationName":"UiAutomator2"
+  "newcommandTimeout": 6000,
+   "automationName":"UiAutomator2"
 
 
 }
@@ -42,4 +42,6 @@ retStr = res[1].text
 print(res)
 if retStr =='60':
     print('测试通过1')
+input("1111")
+driver.quit()
 

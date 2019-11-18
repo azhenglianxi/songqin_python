@@ -8,7 +8,7 @@ import time,traceback
 desired_caps = {
     'automationName': 'uiautomator2',
     'platformName': 'Android',
-    'platformVersion': '6',
+    'platformVersion': '9',
     'deviceName': 'test',
     # 'app': r'd:\apk\toutiao.apk',
     'appPackage': 'io.manong.developerdaily',

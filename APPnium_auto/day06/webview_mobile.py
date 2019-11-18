@@ -9,10 +9,10 @@ import traceback
 desired_caps = {
     # 'automationName': 'UiAutomator2',
     'platformName': 'Android',
-    'platformVersion': '6',
+    'platformVersion': '9',
     'deviceName': 'test',
     'browserName':'Chrome',
-    'chromedriverExecutableDir':r'D:\tools\webdrivers\chromedriver_win32_v75',
+    'chromedriverExecutableDir':r'D:\Users\azhenglianxi\AppData\Local\Programs\Python\Python37\Scripts\chromedriver.exe',
     'newCommandTimeout': 6000
 }
 

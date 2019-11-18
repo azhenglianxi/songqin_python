@@ -5,15 +5,15 @@
 from appium import webdriver
 
 desired_caps ={
-    "platformName": "Android",
-  "platformVersion": "6",
+  "platformName": "Android",
+  "platformVersion": "9",
   "deviceName": "test",
   "appActivity": "io.toutiao.android.ui.activity.LaunchActivity",
-  "app": "r'D:\\Users\\下载\\toutiao.apk'",
+  #'app': r'D:\Users\下载\toutiao.apk',
   "appPackage": "io.manong.developerdaily",
   "noRest": True,
-  "newcommandTimeout": 6000
-   # "automationName":"UiAutomator2"
+  "newcommandTimeout": 6000,
+  "automationName":"UiAutomator2"
 
 
 }

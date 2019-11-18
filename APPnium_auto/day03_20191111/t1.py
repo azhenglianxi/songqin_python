@@ -3,9 +3,9 @@ import time, traceback
 
 desired_caps = {
     'platformName': 'Android',
-    'platformVersion': '6',
+    'platformVersion': '9',
     'deviceName': 'testxxx',
-    # 'app': r'd:\apk\duoduoCalculators.apk',
+    'app': r'd:\apk\duoduoCalculators.apk',
     'appPackage': 'com.ibox.calculators',
     'appActivity': 'com.ibox.calculators.SplashActivity',
     'noReset': True,
