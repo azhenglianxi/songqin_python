@@ -3,14 +3,14 @@ import  time
 
 desired_caps ={
     "platformName": "Android",
-    "platformVersion": 9,
+    "platformVersion": "9",
     "deviceName": "test",
-    "app": "D:\\install_package\\directbank_online_face_next_login0715-release.apk",
-    "appActivity": "com.yuchengnet.android.directbank.SplashActivity",
-    "appPackage": "com.yuchengnet.android.directbank",
-    "noRest": True,
-    "newcommandTimeout": 600,
-    "automationName": "UiAutomator2"
+    "app": "D:\\Users\\下载\\app-sitq2-1118.apk",
+    "appPackage": "com.qdccb.bank",
+    "appActivity": "com.alipay.mobile.quinox.LauncherActivity",
+    "noReset": True,
+    "newCommandTimeout": 5000,
+    "unicodeKeyboard": True
 
 
 }
