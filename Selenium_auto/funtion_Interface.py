@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 chrome_weBdriver='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\chromedriver.exe'
 firox_webDriver ='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\geckodriver.exe'
 Ie_weBdriver='D:\\Users\\azhenglianxi\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\IEDriverServer.exe'
-#谷歌——无界面
+#谷歌——无界面    D:\Users\azhenglianxi\AppData\Local\Programs\Python\Python37\Scripts
 
 
 def ChromeDrverNObroews():

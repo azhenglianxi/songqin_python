@@ -3,8 +3,6 @@
 from appium import webdriver
 import time,traceback
 
-
-
 desired_caps = {
     'automationName': 'uiautomator2',
     'platformName': 'Android',
@@ -21,12 +19,9 @@ desired_caps = {
 #启动Remote RPC
 driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 driver.implicitly_wait(10)
-
 try:
     # -----------------
-
     time.sleep(5)
-
     screenSize = driver.get_window_size()
     screenW = screenSize['width']
     screenH = screenSize['height']
@@ -38,13 +33,9 @@ try:
 
     time.sleep(1)
     eles = driver.find_elements_by_xpath('//android.widget.LinearLayout[@resource-id="android:id/line1"]/android.widget.TextView[@resource-id="android:id/title"]')
-
     for ele in eles:
         print(ele.text)
-
     time.sleep(2)
-
-
     driver.press_keycode(4)
     #
     # time.sleep(2)

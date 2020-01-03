@@ -46,8 +46,7 @@ with open(file_log_path, 'r') as file_log:
 #         if file_type in dict_log.keys():
 #         #取出这个类型value 值
 #             temp=dict_log.get(file_type)
-#             temp+=file_size
 #             dict_log[file_type]=temp
 #         else:
-#             dict_log[file_type] = file_size
+#             dict_log[file_type] += file_size
 print(resdict)

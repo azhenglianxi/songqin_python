@@ -19,7 +19,5 @@ desired_caps ={
 }
 driver =webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
 
-
-
 input(1222121)
 driver.quit()

@@ -5,7 +5,7 @@
 import pymysql
 
 # 打开数据库连接
-db = pymysql.connect("47.105.139.174", "root", "root_password", "Test")
+db = pymysql.connect("47.105.139.174", "root", "root_password", "pythin_lianxi")
 
 
 # 获取操作游标

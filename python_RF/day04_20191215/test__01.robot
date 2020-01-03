@@ -3,7 +3,6 @@ Documentation    Suite description
 Library  SeleniumLibrary
 Library  Collections
 Library  st
-
 *** Keywords ***
 loginwebsite
         [Arguments]   ${username}=auto   ${password}=sdfsdfsdf
@@ -31,7 +30,8 @@ get course list
         ${lessons} =  create list
         :FOR   ${ele}   IN   @{eles}
            \   log to console    ${ele.text}
-           \   append to list ${lessnons}  ${ele.text}
+           \   append to list    ${lessnons}      ${ele.text}
+
         [Return]   ${lessons}
 
 

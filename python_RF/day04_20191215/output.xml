@@ -1,23 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.2 on win32)" generated="20191215 10:52:08.387" rpa="false">
-<suite id="s1" name="01" source="D:\Program Files\Python_package\songqin_python\python_RF\day04_20191215\test__01.robot">
+<robot generator="Robot 3.1.2 (Python 3.7.2 on win32)" generated="20191216 16:31:38.931" rpa="false">
+<suite id="s1" name="T1" source="D:\Program Files\Python_package\songqin_python\python_RF\day04_20191215\t1.robot">
 <test id="s1-t1" name="测试1">
-<kw name="deleteAllCourse" type="setup">
-<msg timestamp="20191215 10:52:08.537" level="FAIL">No keyword with name 'deleteAllCourse' found.</msg>
-<status status="FAIL" starttime="20191215 10:52:08.537" endtime="20191215 10:52:08.537"></status>
+<kw name="Delete All Course" library="st" type="setup">
+<status status="PASS" starttime="20191216 16:31:39.053" endtime="20191216 16:31:45.820"></status>
 </kw>
-<kw name="deleteAllCourse" type="teardown">
-<msg timestamp="20191215 10:52:08.539" level="FAIL">No keyword with name 'deleteAllCourse' found.</msg>
-<status status="FAIL" starttime="20191215 10:52:08.539" endtime="20191215 10:52:08.540">No keyword with name 'deleteAllCourse' found.</status>
+<kw name="login website" library="rc">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>http://localhost/mgr/login/login.html</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20191216 16:31:45.822" level="INFO">Opening browser 'chrome' to base url 'http://localhost/mgr/login/login.html'.</msg>
+<status status="PASS" starttime="20191216 16:31:45.822" endtime="20191216 16:31:49.291"></status>
 </kw>
-<status status="FAIL" starttime="20191215 10:52:08.534" endtime="20191215 10:52:08.540" critical="yes">Setup failed:
-No keyword with name 'deleteAllCourse' found.
-
-Also teardown failed:
-No keyword with name 'deleteAllCourse' found.</status>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<status status="PASS" starttime="20191216 16:31:49.291" endtime="20191216 16:31:49.292"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=username</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20191216 16:31:49.292" level="INFO">Typing text 'auto' into text field 'id=username'.</msg>
+<status status="PASS" starttime="20191216 16:31:49.292" endtime="20191216 16:31:49.366"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20191216 16:31:49.366" level="INFO">Typing text 'sdfsdfsdf' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20191216 16:31:49.366" endtime="20191216 16:31:49.446"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>tag=button</arg>
+</arguments>
+<msg timestamp="20191216 16:31:49.446" level="INFO">Clicking element 'tag=button'.</msg>
+<status status="PASS" starttime="20191216 16:31:49.446" endtime="20191216 16:31:49.488"></status>
+</kw>
+<status status="PASS" starttime="20191216 16:31:45.821" endtime="20191216 16:31:49.488"></status>
+</kw>
+<kw name="add course" library="rc">
+<arguments>
+<arg>初中化学</arg>
+<arg>化学描述</arg>
+<arg>5</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=*[ng-click="showAddOne=true"]</arg>
+</arguments>
+<msg timestamp="20191216 16:31:49.489" level="INFO">Clicking element 'css=*[ng-click="showAddOne=true"]'.</msg>
+<status status="PASS" starttime="20191216 16:31:49.489" endtime="20191216 16:31:50.605"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css=*[ng-model="addData.name"]</arg>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20191216 16:31:50.606" level="INFO">Typing text '初中化学' into text field 'css=*[ng-model="addData.name"]'.</msg>
+<status status="PASS" starttime="20191216 16:31:50.605" endtime="20191216 16:31:50.682"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@class="ng-scope"]//*[@ng-model="addData.desc"]</arg>
+<arg>${desc}</arg>
+</arguments>
+<msg timestamp="20191216 16:31:50.683" level="INFO">Typing text '化学描述' into text field 'xpath=//div[@class="ng-scope"]//*[@ng-model="addData.desc"]'.</msg>
+<status status="PASS" starttime="20191216 16:31:50.682" endtime="20191216 16:31:50.753"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css=*[ng-model="addData.display_idx"]</arg>
+<arg>${idx}</arg>
+</arguments>
+<msg timestamp="20191216 16:31:50.754" level="INFO">Typing text '5' into text field 'css=*[ng-model="addData.display_idx"]'.</msg>
+<status status="PASS" starttime="20191216 16:31:50.754" endtime="20191216 16:31:50.835"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=*[ng-click="addOne()"]</arg>
+</arguments>
+<msg timestamp="20191216 16:31:50.835" level="INFO">Clicking element 'css=*[ng-click="addOne()"]'.</msg>
+<status status="PASS" starttime="20191216 16:31:50.835" endtime="20191216 16:31:50.889"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191216 16:31:52.892" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20191216 16:31:50.890" endtime="20191216 16:31:52.892"></status>
+</kw>
+<status status="PASS" starttime="20191216 16:31:49.488" endtime="20191216 16:31:52.892"></status>
+</kw>
+<kw name="get course list" library="rc">
+<assign>
+<var>${lesson}</var>
+</assign>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>${lessons}</var>
+</assign>
+<msg timestamp="20191216 16:31:52.893" level="INFO">${lessons} = []</msg>
+<status status="PASS" starttime="20191216 16:31:52.893" endtime="20191216 16:31:52.893"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>css=tr&gt;td:nth-child(2)</arg>
+</arguments>
+<assign>
+<var>${eles}</var>
+</assign>
+<msg timestamp="20191216 16:31:52.903" level="INFO">${eles} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="c5fe584065cfcfc388ce98ce0f82b992", element="3f675b27-d026-4622-aeb0-b039342e1645")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20191216 16:31:52.893" endtime="20191216 16:31:52.903"></status>
+</kw>
+<kw name="${ele} IN [ @{eles} ]" type="for">
+<kw name="${ele} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;c5fe584065cfcfc388ce98ce0f82b992&quot;, element=&quot;3f675b27-d026-4622-aeb0-b039342e1645&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${ele.text}</arg>
+</arguments>
+<status status="PASS" starttime="20191216 16:31:52.903" endtime="20191216 16:31:52.915"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${lessons}</arg>
+<arg>${ele.text}</arg>
+</arguments>
+<status status="PASS" starttime="20191216 16:31:52.915" endtime="20191216 16:31:52.921"></status>
+</kw>
+<status status="PASS" starttime="20191216 16:31:52.903" endtime="20191216 16:31:52.921"></status>
+</kw>
+<kw name="${ele} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;c5fe584065cfcfc388ce98ce0f82b992&quot;, element=&quot;301253f3-8d23-48db-bd84-bd1c1b83cc81&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${ele.text}</arg>
+</arguments>
+<status status="PASS" starttime="20191216 16:31:52.921" endtime="20191216 16:31:52.933"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${lessons}</arg>
+<arg>${ele.text}</arg>
+</arguments>
+<status status="PASS" starttime="20191216 16:31:52.933" endtime="20191216 16:31:52.941"></status>
+</kw>
+<status status="PASS" starttime="20191216 16:31:52.921" endtime="20191216 16:31:52.941"></status>
+</kw>
+<kw name="${ele} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;c5fe584065cfcfc388ce98ce0f82b992&quot;, element=&quot;07021965-f120-4d40-b2b6-de206aab53e6&quot;)&gt;" type="foritem">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${ele.text}</arg>
+</arguments>
+<status status="PASS" starttime="20191216 16:31:52.941" endtime="20191216 16:31:52.954"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${lessons}</arg>
+<arg>${ele.text}</arg>
+</arguments>
+<status status="PASS" starttime="20191216 16:31:52.954" endtime="20191216 16:31:52.961"></status>
+</kw>
+<status status="PASS" starttime="20191216 16:31:52.941" endtime="20191216 16:31:52.961"></status>
+</kw>
+<status status="PASS" starttime="20191216 16:31:52.903" endtime="20191216 16:31:52.961"></status>
+</kw>
+<msg timestamp="20191216 16:31:52.961" level="INFO">${lesson} = ['卫栖梧', '初中化学', '213']</msg>
+<status status="PASS" starttime="20191216 16:31:52.892" endtime="20191216 16:31:52.961"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>$lesson==["初中化学"]</arg>
+</arguments>
+<msg timestamp="20191216 16:31:52.964" level="FAIL">'$lesson==["初中化学"]' should be true.</msg>
+<status status="FAIL" starttime="20191216 16:31:52.961" endtime="20191216 16:31:52.964"></status>
+</kw>
+<kw name="Delete All Course" library="st" type="teardown">
+<status status="PASS" starttime="20191216 16:31:52.965" endtime="20191216 16:31:59.731"></status>
+</kw>
+<status status="FAIL" starttime="20191216 16:31:39.051" endtime="20191216 16:31:59.731" critical="yes">'$lesson==["初中化学"]' should be true.</status>
 </test>
-<doc>Suite description</doc>
-<status status="FAIL" starttime="20191215 10:52:08.389" endtime="20191215 10:52:08.544"></status>
+<status status="FAIL" starttime="20191216 16:31:38.932" endtime="20191216 16:31:59.733"></status>
 </suite>
 <statistics>
 <total>
@@ -27,23 +215,9 @@ No keyword with name 'deleteAllCourse' found.</status>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" id="s1" name="01">01</stat>
+<stat pass="0" fail="1" id="s1" name="T1">T1</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20191215 10:52:08.530" level="ERROR">Error in file 'D:\Program Files\Python_package\songqin_python\python_RF\day04_20191215\test__01.robot': Importing test library 'st' failed: ModuleNotFoundError: No module named 'st'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  D:\Users\azhenglianxi\AppData\Local\Programs\Python\Python37\Scripts\robot.exe
-  D:\Program Files\Python_package\songqin_python\python_RF\day04_20191215\export PYTHONPATH=$PYTHONPATH:\home\liu\shell\config
-  d:\users\azhenglianxi\appdata\local\programs\python\python37\python37.zip
-  d:\users\azhenglianxi\appdata\local\programs\python\python37\DLLs
-  d:\users\azhenglianxi\appdata\local\programs\python\python37\lib
-  d:\users\azhenglianxi\appdata\local\programs\python\python37
-  d:\users\azhenglianxi\appdata\local\programs\python\python37\lib\site-packages
-  d:\users\azhenglianxi\appdata\local\programs\python\python37\lib\site-packages\win32
-  d:\users\azhenglianxi\appdata\local\programs\python\python37\lib\site-packages\win32\lib
-  d:\users\azhenglianxi\appdata\local\programs\python\python37\lib\site-packages\Pythonwin</msg>
 </errors>
 </robot>
