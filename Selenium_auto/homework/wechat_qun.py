@@ -5,7 +5,7 @@ import matplotlib.pyplot as plot
 def chatProportion():
     itchat.auto_login(True)
     male = female = other = 0
-    rName = "加油努力脱单吧"
+    rName = "山东7群"
     roomSum = 0
     chatRooms = itchat.search_chatrooms(name=rName)
     if chatRooms is None:

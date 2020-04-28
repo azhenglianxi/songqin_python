@@ -102,7 +102,7 @@ print(r.text)
 #4-30 定义一个字典，叫payload，内容是要转递的请求体消息
 payload={
           'action' : 'add_course_json',
-          'data'	 : {
+           'data'	 : {
             'name':'小学数www学qqqq',
             'desc':'sss',
             'display_idx':'4'

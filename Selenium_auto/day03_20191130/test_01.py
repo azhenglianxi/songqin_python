@@ -13,7 +13,7 @@ driver = webdriver.Chrome()
 driver.get('file:///D:/Users/azhenglianxi/songqin_python/Selenium_auto/if.html')
 
 driver.switch_to.frame('baidu')
-driver.find_element_by_id('kw').send_keys('松勤\n')
+driver.find_element_by_id('kw').send_keys('新闻\n')
 
 #切回主HTML
 driver.switch_to.default_content()

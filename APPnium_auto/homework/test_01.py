@@ -14,7 +14,7 @@ desired_caps ={
    "app": "D:\\Users\\下载\\com.ibox.calculators_3.1.0_1310.apk",
   "appActivity": "com.ibox.calculators.SplashActivity",
   "appPackage": "com.ibox.calculators",
-  "noRest": True,
+  'noReset': "True",
   "newcommandTimeout": 6000,
    "automationName":"UiAutomator2"
 
